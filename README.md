@@ -69,6 +69,12 @@ Para popular o banco com fornecedores, produtos e histórico de preços fictíci
 python scripts/seed_demo.py
 ```
 
+Com Docker Compose rodando (a partir do repositório `confeitaria-frontend`):
+
+```bash
+docker compose exec backend python scripts/seed_demo.py
+```
+
 **Atenção:** o script apaga todos os dados existentes antes de popular.
 
 ## Instalação e execução local (sem Docker)
