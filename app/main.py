@@ -1,16 +1,24 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.config import get_settings
-from app.database import Base, engine
-from app.routers import auth, dashboard, ocr, price_records, products, shopping_lists, suppliers
+from app.banco_dados import Base, motor
+from app.configuracao import obter_configuracoes
+from app.rotas import (
+    autenticacao,
+    fornecedores,
+    listas_compras,
+    ocr,
+    painel,
+    produtos,
+    registros_preco,
+)
 
-settings = get_settings()
+configuracoes = obter_configuracoes()
 
-Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=motor)
 
 app = FastAPI(
-    title=settings.app_name,
+    title=configuracoes.nome_app,
     description=(
         "API de back-end do sistema de compras para confeitaria. Consome a "
         "API externa OCR.space para leitura de etiquetas de mercado."
@@ -20,21 +28,21 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins,
+    allow_origins=configuracoes.origens_cors,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(auth.router)
-app.include_router(suppliers.router)
-app.include_router(products.router)
-app.include_router(price_records.router)
-app.include_router(shopping_lists.router)
-app.include_router(ocr.router)
-app.include_router(dashboard.router)
+app.include_router(autenticacao.roteador)
+app.include_router(fornecedores.roteador)
+app.include_router(produtos.roteador)
+app.include_router(registros_preco.roteador)
+app.include_router(listas_compras.roteador)
+app.include_router(ocr.roteador)
+app.include_router(painel.roteador)
 
 
-@app.get("/health", tags=["health"])
-def health_check():
+@app.get("/saude", tags=["saúde"])
+def verificar_saude():
     return {"status": "ok"}
