@@ -61,6 +61,16 @@ flowchart LR
 
 Documentação interativa (Swagger) disponível em `/docs` após subir a aplicação.
 
+## Dados de demonstração
+
+Para popular o banco com fornecedores, produtos e histórico de preços fictícios (útil para o vídeo de entrega, sem precisar escanear etiquetas de verdade):
+
+```bash
+python scripts/seed_demo.py
+```
+
+**Atenção:** o script apaga todos os dados existentes antes de popular.
+
 ## Instalação e execução local (sem Docker)
 
 ```bash
