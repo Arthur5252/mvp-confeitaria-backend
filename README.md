@@ -84,4 +84,9 @@ docker run -p 8000:8000 --env-file .env -v $(pwd)/data:/app/data confeitaria-bac
 
 ## Variáveis de ambiente
 
-Ver `.env.example`.
+Ver `.env.example`. **Antes de rodar em produção** (ex.: no notebook exposto via port forwarding), gere valores próprios para `APP_PASSWORD` e `JWT_SECRET` — nunca use os valores de exemplo do repositório:
+
+```bash
+python -c "import secrets; print(secrets.token_urlsafe(48))"   # para JWT_SECRET
+python -c "import secrets; print(secrets.token_urlsafe(12))"   # para APP_PASSWORD
+```

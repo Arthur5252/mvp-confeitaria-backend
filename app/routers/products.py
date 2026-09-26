@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from app.auth import get_current_user
@@ -16,7 +17,10 @@ def list_products(q: str | None = Query(default=None), db: Session = Depends(get
     query = db.query(Product)
     if q:
         query = query.filter(Product.name.ilike(f"%{q}%"))
-    return query.order_by(Product.name).all()
+    # Ordena ignorando maiúsculas/minúsculas — o SQLite usa collation binária
+    # por padrão, o que colocaria "PRODUTO..." antes de "leite" mesmo estando
+    # fora de ordem alfabética real, confundindo o seletor do dashboard.
+    return query.order_by(func.lower(Product.name)).all()
 
 
 @router.post("", response_model=ProductOut, status_code=201)

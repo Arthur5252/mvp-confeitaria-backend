@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from app.auth import get_current_user
@@ -13,7 +14,7 @@ router = APIRouter(
 
 @router.get("", response_model=list[SupplierOut])
 def list_suppliers(db: Session = Depends(get_db)):
-    return db.query(Supplier).order_by(Supplier.name).all()
+    return db.query(Supplier).order_by(func.lower(Supplier.name)).all()
 
 
 @router.post("", response_model=SupplierOut, status_code=201)
