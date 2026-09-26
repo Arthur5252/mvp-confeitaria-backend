@@ -3,7 +3,7 @@ produtos, histórico de preços e uma lista de compras) — útil para gravar o
 vídeo de entrega ou mostrar o dashboard sem precisar escanear etiquetas de
 verdade antes.
 
-Uso (a partir da raiz de confeitaria-backend):
+Uso (a partir da raiz de backend):
 
     python scripts/seed_demo.py
 
