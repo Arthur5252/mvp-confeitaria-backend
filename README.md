@@ -105,7 +105,7 @@ git clone https://github.com/Arthur5252/mvp-confeitaria-frontend.git frontend
 
 ## Variáveis de ambiente
 
-Ver `.env.example`. **Antes de rodar em produção** (ex.: no notebook exposto via redirecionamento de portas), gere valores próprios para `SENHA_APP` e `SEGREDO_JWT` — nunca use os valores de exemplo do repositório:
+Ver `.env.example`. Ele já traz um usuário e uma senha de **avaliação** (`avaliador` / `confeitaria123`), públicos de propósito para quem for avaliar o projeto. **Antes de rodar em produção** (ex.: no notebook exposto via redirecionamento de portas), gere valores próprios para `SENHA_APP` e `SEGREDO_JWT`:
 
 ```bash
 python -c "import secrets; print(secrets.token_urlsafe(48))"   # para SEGREDO_JWT
