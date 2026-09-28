@@ -32,7 +32,7 @@ flowchart LR
 
 - **Serviço**: [OCR.space](https://ocr.space/ocrapi) — API REST gratuita de OCR (reconhecimento de texto em imagens).
 - **Licença/custo**: tier gratuito, sem necessidade de cartão de crédito (limite de 25.000 requisições/mês na chave gratuita).
-- **Cadastro**: crie uma chave gratuita em https://ocr.space/ocrapi/freekey e defina em `CHAVE_API_OCR_SPACE` no `.env`.
+- **Cadastro**: para uso próprio, crie uma chave gratuita em https://ocr.space/ocrapi/freekey e defina em `CHAVE_API_OCR_SPACE` no `.env`. O `.env.example` já traz uma chave de avaliação.
 - **Rota utilizada**: `POST https://api.ocr.space/parse/image` (multipart, campo `file` com a imagem, enviado pelo backend, `language=por`, `OCREngine=2`).
 - Os dados retornados (texto bruto) são consumidos e processados inteiramente por este backend (`/ocr/escanear`) — em nenhum momento o usuário é redirecionado para o site do OCR.space.
 
