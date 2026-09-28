@@ -13,8 +13,7 @@ class Configuracoes:
 
     url_banco: str = os.getenv("URL_BANCO", "sqlite:///./data/confeitaria.db")
 
-    # Autenticação simples (usuário único) — necessária pois o sistema fica
-    # exposto na internet via redirecionamento de portas.
+    # Autenticação simples (usuário único).
     usuario_app: str = os.getenv("USUARIO_APP", "admin")
     senha_app: str = os.getenv("SENHA_APP", "changeme")
     segredo_jwt: str = os.getenv("SEGREDO_JWT", "insecure-dev-secret-change-me")
