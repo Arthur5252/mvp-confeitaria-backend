@@ -2,14 +2,14 @@
 
 API REST (FastAPI + SQLite) do sistema de gestão de compras para confeitaria. Responsável por persistir listas de compras, fornecedores, produtos e histórico de preços, e por orquestrar a leitura de etiquetas de mercado via uma API externa de OCR.
 
-Este repositório é o módulo **"API (Back-End)"** do MVP de componentização/microsserviços. O módulo de interface (frontend) está no repositório [`confeitaria-frontend`](https://github.com/SEU_USUARIO/confeitaria-frontend).
+Este repositório é o módulo **"API (Back-End)"** do MVP de componentização/microsserviços. O módulo de interface (frontend) está no repositório [`mvp-confeitaria-frontend`](https://github.com/Arthur5252/mvp-confeitaria-frontend).
 
 ## Arquitetura
 
 ```mermaid
 flowchart LR
     subgraph Cliente
-        FE[Frontend PWA React<br/>confeitaria-frontend]
+        FE[Frontend PWA React<br/>mvp-confeitaria-frontend]
     end
 
     subgraph Backend[Este repositório]
@@ -69,7 +69,7 @@ Para popular o banco com fornecedores, produtos e histórico de preços fictíci
 python scripts/popular_demo.py
 ```
 
-Com Docker Compose rodando (a partir do repositório `confeitaria-frontend`):
+Com Docker Compose rodando (a partir do repositório `mvp-confeitaria-frontend`):
 
 ```bash
 docker compose exec backend python scripts/popular_demo.py
@@ -96,7 +96,12 @@ docker build -t confeitaria-backend .
 docker run -p 8000:8000 --env-file .env -v $(pwd)/data:/app/data confeitaria-backend
 ```
 
-(O `docker-compose.yml` que sobe backend + frontend juntos está na raiz do repositório [`confeitaria-frontend`](https://github.com/SEU_USUARIO/confeitaria-frontend).)
+O `docker-compose.yml` que sobe backend + frontend juntos está na raiz do repositório [`mvp-confeitaria-frontend`](https://github.com/Arthur5252/mvp-confeitaria-frontend). Ele espera as pastas `backend` e `frontend` lado a lado, então clone informando o nome da pasta:
+
+```bash
+git clone https://github.com/Arthur5252/mvp-confeitaria-backend.git backend
+git clone https://github.com/Arthur5252/mvp-confeitaria-frontend.git frontend
+```
 
 ## Variáveis de ambiente
 
